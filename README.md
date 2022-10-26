@@ -38,16 +38,27 @@ npm start
 
 ### How to build the app:
 
+in terminal:
+mongosh
+use bookings
+
 mkdir server client
 
-./server
+### ./server
+
+npm i mongodb 3.5.7
+
 mkdir db helpers
 
 touch server/db seeds.js
-Put seeds in here!
+--Put seeds in here!
 
 touch server/helpers create_router.js
-Put router in here!
+--Put router in here!
 
 touch server server.js
-Connect to mongodb in here!
+--Connect to mongodb in here!
+
+server/package.json >
+under scripts:
+"seeds": "mongosh < ./db/seeds.js"
