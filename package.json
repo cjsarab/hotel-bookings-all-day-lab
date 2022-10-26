@@ -16,8 +16,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "seeds": "mongosh < ./db/seeds.js"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [

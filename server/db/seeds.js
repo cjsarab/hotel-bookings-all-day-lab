@@ -1,7 +1,7 @@
-use bookings;
+use hotel;
 db.dropDatabase();
 
-db.guests.insertMany([
+db.bookings.insertMany([
     {
         guest_name: "Tom Nook",
         guest_email: "tanukiboss@island.com",
@@ -17,4 +17,4 @@ db.guests.insertMany([
         guest_email: "prime@brinstar.com",
         checked_in: true
     }
-])
+]);

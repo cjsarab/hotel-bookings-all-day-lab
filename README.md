@@ -40,13 +40,21 @@ npm start
 
 in terminal:
 mongosh
-use bookings
+use 'database-name'
 
 mkdir server client
 
 ### ./server
 
-npm i mongodb 3.5.7
+npm init -y
+npm install --save -dev
+npm install mongodb 3.5.7
+npm install cors
+
+server/package.json >
+under scripts:
+"seeds": "mongosh < ./db/seeds.js"
+"server:dev": "nodemon server.js",
 
 mkdir db helpers
 
@@ -59,6 +67,4 @@ touch server/helpers create_router.js
 touch server server.js
 --Connect to mongodb in here!
 
-server/package.json >
-under scripts:
-"seeds": "mongosh < ./db/seeds.js"
+
