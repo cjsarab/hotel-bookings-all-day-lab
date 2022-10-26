@@ -1,19 +1,42 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import ShowBooking from './ShowBooking';
 
 const BookingItem = ({
     bookingItem,
+    bookingID,
+    selectedBookingItem,
+
     getBookingID,
+    getSelectedBookingItem
 }) => {
+
+const id = bookingItem._id
+
+const onClick = () => {
+    getBookingID(id);
+    getSelectedBookingItem(bookingItem);
+};
+
   return (
     <>
-    <p>Guest Name: {bookingItem.guest_name}</p>
-    <p>Guest Email: {bookingItem.guest_email}</p>
-    <p>Checked In? {bookingItem.checked_in ? <span>True</span> : <span>False</span> }
-    </p>
         <li>
-            <Link to="/bookings/show-booking/:id" onClick={getBookingID(bookingItem._id)}>Show Booking</Link>
+            <button onClick={onClick}>{bookingItem.guest_name}</button>
         </li>
+        <div>
+            {
+            selectedBookingItem 
+            && 
+            bookingItem._id == bookingID
+            ? 
+            <ShowBooking
+            bookingID={bookingID} 
+            bookingItem={bookingItem}
+            />
+            :
+            null 
+            }
+        </div>
     <br/>
     </>
   );

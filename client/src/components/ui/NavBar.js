@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const NavBar = () => {
+const NavBar = (bookingID) => {
   return (
     <>
     <ul className="nav-bar">
@@ -11,18 +11,15 @@ const NavBar = () => {
         <li>
             <Link to="/bookings">Bookings</Link>
         </li>
+        <li>
+            <Link to="/bookings/create-booking">Create Booking</Link>
+        </li>
         {/* <li>
-            <Link to="/bookings/:id">Show Booking</Link>
-        </li>
-        <li>
-            <Link to="/bookings">Create Booking</Link>
-        </li>
-        <li>
             <Link to="/bookings/:id">Delete Booking</Link>
         </li>
         <li>
             <Link to="/bookings/:id">Update Booking</Link>
-        </li> */}
+        </li>  */}
     </ul>
     </>
   );

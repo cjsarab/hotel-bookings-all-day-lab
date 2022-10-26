@@ -1,13 +1,13 @@
 import React from 'react';
-import {useParams} from 'react-router-dom';
 
-const ShowBooking = ({bookingID}) => {
-
-    const {id} = useParams(bookingID)
-
+const ShowBooking = ({bookingItem}) => {
 
   return (
-    <div>this is the booking page</div>
+    <>
+    <p>Guest Name: {bookingItem.guest_name}</p>
+    <p>Guest Email: {bookingItem.guest_email}</p>
+    <p>Checked In? {bookingItem.checked_in ? <span>True</span> : <span>False</span> }</p>
+    </>
   );
 };
 

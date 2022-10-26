@@ -4,25 +4,33 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NavBar from '.././components/ui/NavBar';
 import HomePage from "../components/HomePage";
 import BookingsList from "../components/BookingsList";
-import ShowBooking from "../components/ShowBooking";
+import BookingService from "../services/BookingsService";
+import CreateBooking from "../components/CreateBooking";
 
 const MainContainer = () => {
 
     const [bookings, setBookings] = useState([])
-    var [bookingID, setBookingID] = useState(null)
+    const [bookingID, setBookingID] = useState(null)
+    const [selectedBookingItem, setSelectedBookingItem] = useState([])
 
     useEffect(() => {
-      getBookings();
+        BookingService.getBookings()
+        .then(bookings => setBookings(bookings))
     }, []);
 
-    const getBookings = function(){
-        fetch("http://localhost:9000/api/bookings")
-        .then(res => res.json())
-        .then(bookings => setBookings(bookings))
+    const getBookingID = function(id) {
+        console.log("haha");
+        setBookingID(id)
     };
 
-    const getBookingID = function(id) {
-        setBookingID(id)
+    const getSelectedBookingItem =function(bookingItem) {
+        setSelectedBookingItem(bookingItem)
+    };
+
+    const addBooking = (booking) => {
+        const temp = bookings.map(s => s);
+        temp.push(booking);
+        setBookings(temp);
     }
 
     return (
@@ -35,14 +43,17 @@ const MainContainer = () => {
 
               <Route path="/bookings" element={
               <BookingsList 
-              bookings={bookings} 
+              bookings={bookings}
+              bookingID={bookingID}
+              selectedBookingItem={selectedBookingItem}
+
               getBookingID={getBookingID}
+              getSelectedBookingItem={getSelectedBookingItem}
               />} />
 
-              <Route path="/bookings/show-booking/id" element={
-              <ShowBooking 
-              bookingID={bookingID}
-              />} />
+              <Route path="/bookings/create-booking" element={
+              <CreateBooking addBooking={addBooking}/>
+              }/>
 
             </Routes>
         </Router>
