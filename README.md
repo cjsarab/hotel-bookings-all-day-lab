@@ -67,4 +67,8 @@ touch server/helpers create_router.js
 touch server server.js
 --Connect to mongodb in here!
 
+### ./client
+
+npm install react-router-dom
+
 
